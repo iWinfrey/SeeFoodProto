@@ -18,25 +18,25 @@
             app:layout_constraintHorizontal_bias="0.565" app:layout_constraintVertical_bias="0.126"
             android:textSize="24sp"/>
     <Button
-            android:text="Button"
+            android:text="📷"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button" app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toStartOf="@+id/button2"
+            android:id="@+id/open_camera_btn" app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toStartOf="@+id/open_gallery_btn"
             android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:layout_marginBottom="36dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.541"/>
     <Button
-            android:text="Button"
+            android:text="🖼️"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button2" android:layout_marginBottom="36dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toStartOf="@+id/button3"
+            android:id="@+id/open_gallery_btn" android:layout_marginBottom="36dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toStartOf="@+id/open_history_btn"
             android:layout_marginEnd="68dp" android:layout_marginRight="68dp"/>
     <Button
-            android:text="Button"
+            android:text="🕒"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button3" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="40dp"
+            android:id="@+id/open_history_btn" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="40dp"
             android:layout_marginRight="40dp" android:layout_marginBottom="36dp"
             app:layout_constraintBottom_toBottomOf="parent"/>
     <ImageView

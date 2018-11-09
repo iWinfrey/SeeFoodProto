@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">SeeFoodProtov2</string>
+    <string name="app_name">See Food 10.8 Mountain Lion Xtreme Edition</string>
+    <string name="title_activity_history">View Food Archives</string>
+    <string name="title_activity_gallery">Select an Image</string>
+    <string name="title_activity_camera">Take a Picture</string>
 </resources>

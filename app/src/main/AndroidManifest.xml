@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.bioni.seefoodprotov2">
 
+    <uses-feature
+            android:name="android.hardware.camera"
+            android:required="false"/> <!-- needed to take picture -->
+    <uses-permission
+            android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+            android:maxSdkVersion="18"/>
+
+    <!-- needed to save picture; doesn't need permission on 4.4+ -->
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -12,13 +20,35 @@
         <activity
                 android:name=".MainActivity"
                 android:label="@string/app_name">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity
+                android:name=".CameraActivity"
+                android:label="@string/title_activity_camera">
+        </activity>
+        <activity
+                android:name=".GalleryActivity"
+                android:label="@string/title_activity_gallery">
+        </activity>
+        <activity
+                android:name=".HistoryActivity"
+                android:label="@string/title_activity_history"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <provider
+                android:name="android.support.v4.content.FileProvider"
+                android:authorities="com.example.bioni.seefoodprotov2"
+                android:exported="false"
+                android:grantUriPermissions="true">
+            <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/file_paths"></meta-data>
+        </provider>
+
     </application>
 
 </manifest>
