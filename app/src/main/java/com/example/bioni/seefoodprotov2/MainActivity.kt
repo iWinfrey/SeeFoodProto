@@ -19,6 +19,10 @@ import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
+import android.content.ContentUris
+import android.content.Context
+import android.database.Cursor
+import android.provider.DocumentsContract
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,37 +34,37 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // ask for permissions upfront if they aren't granted
-        if (ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            val writePermission = Array(1) { Manifest.permission.CAMERA}
-            requestPermissions(writePermission, 16846846)
+        // check for read and write external storage permissions, if we haven't already been granted them
+        if (ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            val readPermission = Array(1) { Manifest.permission.READ_EXTERNAL_STORAGE}
+            requestPermissions(readPermission, 999)
+        }
+        if (ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            val writePermission = Array(1) { Manifest.permission.WRITE_EXTERNAL_STORAGE}
+            requestPermissions(writePermission, 9999)
         }
 
         // set actions for the navigation buttons
         val openCameraButton = findViewById<Button>(R.id.open_camera_btn)
         openCameraButton.setOnClickListener {
 
+            // check for camera permissions, if we haven't already been granted them
+            if (ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                val cameraPermission = Array(1) { Manifest.permission.CAMERA}
+                requestPermissions(cameraPermission, 99)
+            }
+
             // opens the camera directly
             dispatchTakePictureIntent()
-
-            // uncomment the following to use the CameraActivity, instead of going directly to the system file picker
-//            val intent = Intent(this, CameraActivity::class.java).apply {
-//                putExtra("Thing to do", "Start Cameraing!") // what does this do? nobody knows
-//            }
-//            startActivity(intent)
         }
+
         val openGalleryActivity= findViewById<Button>(R.id.open_gallery_btn)
         openGalleryActivity.setOnClickListener {
 
             // opens the system file picker
             performFileSearch()
-
-            // uncomment the following to use the GalleryActivity, instead of going directly to the system file picker
-//            val intent = Intent(this, GalleryActivity::class.java).apply {
-//                putExtra("Thing to do", "Start Gallerying!") // what does this do? nobody knows
-//            }
-//            startActivity(intent)
         }
+
         val openHistoryButton = findViewById<Button>(R.id.open_history_btn)
         openHistoryButton.setOnClickListener {
             val intent = Intent(this, HistoryActivity::class.java).apply {
@@ -93,17 +97,14 @@ class MainActivity : AppCompatActivity() {
         if (rando == 0) {
             fade(v)                                             //fade animation
             iv.setImageResource(R.drawable.wolfpic)             //first wolf pic
-
         } else if (rando == 1) {
             fade(v)
             iv.setImageResource(R.drawable.wolfpic2)
-
         }
         else if (rando == 2){
             fade(v)
             iv.setImageResource(R.drawable.wolfpic7)
         }
-
         else if (rando == 3) {
             fade(v)
             iv.setImageResource(R.drawable.wolfpic3)
@@ -184,34 +185,25 @@ class MainActivity : AppCompatActivity() {
     // this will get called when either the camera or file picker activity returns
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
 
-        // The ACTION_OPEN_DOCUMENT intent was sent with the request code
-        // REQUEST_FILE_PICKER. If the request code seen here doesn't match, it's the
-        // response to some other intent, and the code below shouldn't run at all.
-
         if (requestCode == REQUEST_FILE_PICKER && resultCode == Activity.RESULT_OK) {
-            // The document selected by the user won't be returned in the intent.
-            // Instead, a URI to that document will be contained in the return intent
-            // provided to this method as a parameter.
-            // Pull that URI using resultData.getData().
+            // when the user has selected an existing image from their gallery
             resultData?.data?.also { uri ->
                 println(uri)
 
-                // TODO: this seems to be working right, but we need to figure out how to pass the image to the upload activity properly
+                FileUploadCandidate.file = File(getPath(applicationContext, uri))
 
                 val intent = Intent(this, UploadActivity::class.java).apply {
                     // pass the image data to the upload activity
-                    FileUploadCandidate.file = File(uri.path)
-                    putExtra("path", uri.path) // what does this do? nobody knows
-                    putExtra("path_encoded", uri.encodedPath)
-                    putExtra("uri_string", uri.toString())
+                    putExtra("Thing", "Something")
                 }
                 startActivity(intent)
             }
         } else if (requestCode == REQUEST_TAKE_PHOTO && resultCode == Activity.RESULT_OK) {
+            // when the user has taken a picture with their default camera app
             resultData?.data?.also {uri ->
                 print(uri)
 
-                // TODO: for some reason resultCode is coming back -1 (failing)
+                // TODO: need to figure out how to get this part working, it's not returning what we need
 
                 val intent = Intent(this, UploadActivity::class.java).apply {
                     // pass the image data to the upload activity
@@ -224,4 +216,77 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    // this function code from https://www.coderpoint.info/questions/52694751/how-to-get-file-path-from-uri.html
+    fun getPath(context:Context, uri:Uri): String? {
+
+        val split = DocumentsContract.getDocumentId(uri).split(":")
+
+        if ("com.android.externalstorage.documents" == uri.authority) {
+            val type = split[0]
+            if ("primary" == type.toLowerCase()) {
+                return Environment.getExternalStorageDirectory().toString() + File.separator + split[1]
+            }
+        } else if ("com.android.providers.downloads.documents" == uri.authority) {
+            val id = DocumentsContract.getDocumentId(uri)
+            val contentUri = ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloads"), id.toLong())
+            return getDataColumn(context, contentUri, null, null)
+        } else if ("com.android.providers.media.documents" == uri.authority) {
+            val type = DocumentsContract.getDocumentId(uri).split(":")[0]
+
+            var contentUri:Uri? = null
+
+            if ("video" == type) {
+                contentUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+            } else if ("audio" == type) {
+                contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
+            } else {
+                contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+            }
+
+            val selection = "_id=?"
+            val selectionArgs = arrayOf(split[1])
+            return getDataColumn(context, contentUri, selection, selectionArgs)
+        }
+
+        return null
+    }
+
+    /**
+     * Get the value of the data column for this Uri. This is useful for
+     * MediaStore Uris, and other file-based ContentProviders.
+     *
+     * @param context           - The context.
+     * @param uri               - The Uri to query.
+     * @param selection         - (Optional) Filter used in the query.
+     * @param selectionArgs     - (Optional) Selection arguments used in the query.
+     * @return                  - The value of the _data column, which is typically a file path.
+     */
+    private fun getDataColumn(
+        context: Context, uri: Uri,
+        selection: String?, selectionArgs: Array<String>?
+    ): String? {
+        // this function code from https://www.coderpoint.info/questions/52694751/how-to-get-file-path-from-uri.html
+        var cursor: Cursor? = null
+        val column = "_data"
+        val projection = arrayOf(column)
+
+        try {
+            cursor = context.contentResolver.query(
+                uri, projection,
+                selection, selectionArgs, null
+            )
+
+            if (cursor != null && cursor.moveToFirst()) {
+                val index = cursor.getColumnIndexOrThrow(column)
+                return cursor.getString(index)
+            }
+        } finally {
+            cursor?.close()
+        }
+
+        return null
+    }
+
+
 }

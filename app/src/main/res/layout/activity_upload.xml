@@ -26,15 +26,19 @@
                       android:layout_height="match_parent"
                       android:paddingLeft="16dp"
                       android:paddingRight="16dp"
-                      android:orientation="horizontal"
+                      android:orientation="vertical"
                       android:gravity="center">
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:text="Image Preview"/>
 
             <Button android:text="Upload"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/go_back_btn"/>
 
-            <Button android:text="Retake Image"
+            <Button android:text="Redo Image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/upload_image_btn"/>

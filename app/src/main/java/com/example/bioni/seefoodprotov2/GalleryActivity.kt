@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
+@Deprecated("Activity no longer required. Gallery app is opened directly from MainActivity, then image passed to UploadActivity")
 class GalleryActivity : AppCompatActivity() {
 
     private val READ_REQUEST_CODE: Int = 42

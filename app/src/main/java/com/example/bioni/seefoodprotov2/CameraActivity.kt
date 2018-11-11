@@ -13,6 +13,7 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
+@Deprecated("Activity no longer required. Camera app is opened directly from MainActivity, then image passed to UploadActivity")
 class CameraActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -2,12 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.bioni.seefoodprotov2">
 
-    <uses-feature
-            android:name="android.hardware.camera"
-            android:required="false"/> <!-- needed to take picture -->
-    <uses-permission
-            android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-            android:maxSdkVersion="18"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/> <!-- needed to take picture -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <!-- needed to save picture; doesn't need permission on 4.4+ -->
     <application

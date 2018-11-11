@@ -14,4 +14,7 @@ class HistoryActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
     }
 
+    // TODO: implement this whole thing, show historic classifications, allow user to download image maybe?
+    // TODO: could put statistics on this page, or could put them on main activity
+
 }
