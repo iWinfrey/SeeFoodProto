@@ -19,7 +19,7 @@ class UploadActivity : AppCompatActivity() {
         previewBox.setImageURI(Uri.fromFile(FileUploadCandidate.file))
 
         // set actions for the navigation buttons
-        val uploadImageButton = findViewById<Button>(R.id.open_camera_btn)
+        val uploadImageButton = findViewById<Button>(R.id.upload_btn)
         uploadImageButton.setOnClickListener {
             // TODO: upload to server then open the results activity
         }
