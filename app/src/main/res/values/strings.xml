@@ -3,4 +3,5 @@
     <string name="title_activity_history">View Food Archives</string>
     <string name="title_activity_gallery">Select an Image</string>
     <string name="title_activity_camera">Take a Picture</string>
+    <string name="title_activity_upload">Upload Preview</string>
 </resources>

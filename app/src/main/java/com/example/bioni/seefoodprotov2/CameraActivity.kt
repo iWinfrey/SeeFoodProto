@@ -22,7 +22,6 @@ class CameraActivity : AppCompatActivity() {
         val takePictureButton = findViewById<Button>(R.id.take_picture_btn)
         takePictureButton.setOnClickListener {
             dispatchTakePictureIntent()
-            // TODO: but we need to do something with the picture we took
         }
 
     }
@@ -48,6 +47,7 @@ class CameraActivity : AppCompatActivity() {
 
     private fun dispatchTakePictureIntent() {
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+
             // Ensure that there's a camera activity to handle the intent
             takePictureIntent.resolveActivity(packageManager)?.also { it ->
                 // Create the File where the photo should go
@@ -66,6 +66,7 @@ class CameraActivity : AppCompatActivity() {
                     )
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
                     startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO)
+
                 }
             }
         }
