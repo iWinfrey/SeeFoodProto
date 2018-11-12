@@ -24,7 +24,11 @@ class UploadActivity : AppCompatActivity() {
             // TODO: upload to server then open the results activity
         }
 
-        // TODO: add a button to go back to either camera or gallery if the user doens't like the picture
+        // set actions for the navigation buttons
+        val goBackButton = findViewById<Button>(R.id.upload_btn)
+        goBackButton.setOnClickListener {
+            // TODO: either camera or gallery if the user doesn't like the picture
+        }
 
     }
 }

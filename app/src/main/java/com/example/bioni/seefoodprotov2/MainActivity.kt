@@ -150,6 +150,7 @@ class MainActivity : AppCompatActivity() {
             ".jpg", /* suffix */
             storageDir /* directory */
         ).apply {
+            FileUploadCandidate.file = this
             // Save a file: path for use with ACTION_VIEW intents
             mCurrentPhotoPath = absolutePath
         }
@@ -194,26 +195,18 @@ class MainActivity : AppCompatActivity() {
 
                 val intent = Intent(this, UploadActivity::class.java).apply {
                     // pass the image data to the upload activity
-                    putExtra("Thing", "Something")
+                    putExtra("source", "gallery")
                 }
                 startActivity(intent)
             }
         } else if (requestCode == REQUEST_TAKE_PHOTO && resultCode == Activity.RESULT_OK) {
             // when the user has taken a picture with their default camera app
-            resultData?.data?.also {uri ->
-                print(uri)
 
-                // TODO: need to figure out how to get this part working, it's not returning what we need
-
-                val intent = Intent(this, UploadActivity::class.java).apply {
-                    // pass the image data to the upload activity
-                    FileUploadCandidate.file = File(uri.path)
-                    putExtra("path", uri.path) // what does this do? nobody knows
-                    putExtra("uri_string", uri.toString())
-                }
-                startActivity(intent)
-
+            val intent = Intent(this, UploadActivity::class.java).apply {
+                putExtra("source", "camera")
             }
+            startActivity(intent)
+
         }
     }
 
