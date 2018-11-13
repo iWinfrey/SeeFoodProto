@@ -34,5 +34,9 @@ class UploadImageService : IntentService(UploadImageService::class.simpleName) {
 
         print(response.body().toString())
 
+        // TODO: launch the results activity after the call comes back
+
+        // TODO: Do we have to manually kill this thing after we're done with it?
+
     }
 }
