@@ -9,6 +9,7 @@ import okhttp3.Request
 import okhttp3.RequestBody
 
 // https://developer.android.com/training/run-background-service/create-service
+// https://developer.android.com/guide/components/services#ExtendingIntentService
 
 class UploadImageService : IntentService(UploadImageService::class.simpleName) {
 
