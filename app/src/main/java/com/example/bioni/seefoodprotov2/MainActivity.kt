@@ -37,11 +37,15 @@ class MainActivity : AppCompatActivity() {
         // check for read and write external storage permissions, if we haven't already been granted them
         if (ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             val readPermission = Array(1) { Manifest.permission.READ_EXTERNAL_STORAGE}
-            requestPermissions(readPermission, 999)
+            requestPermissions(readPermission, 9995)
         }
         if (ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             val writePermission = Array(1) { Manifest.permission.WRITE_EXTERNAL_STORAGE}
-            requestPermissions(writePermission, 9999)
+            requestPermissions(writePermission, 9991)
+        }
+        if (ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
+            val internetPermission = Array(1) { Manifest.permission.INTERNET}
+            requestPermissions(internetPermission, 9998)
         }
 
         // set actions for the navigation buttons

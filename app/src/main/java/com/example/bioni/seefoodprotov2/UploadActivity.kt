@@ -1,14 +1,18 @@
 package com.example.bioni.seefoodprotov2
 
+import android.content.Intent
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
+import okhttp3.MediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
 
 class UploadActivity : AppCompatActivity() {
-
-    lateinit var imagePath: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,11 +25,18 @@ class UploadActivity : AppCompatActivity() {
         // set actions for the navigation buttons
         val uploadImageButton = findViewById<Button>(R.id.upload_btn)
         uploadImageButton.setOnClickListener {
-            // TODO: upload to server then open the results activity
+
+            Toast.makeText(this, "Uploading Image...", Toast.LENGTH_SHORT).show()
+
+            // use of a service is required for network calls, because network calls are not allowed to execute on the main thread
+            Intent(this, UploadImageService::class.java).also { intent ->
+                startService(intent)
+            }
+
         }
 
         // set actions for the navigation buttons
-        val goBackButton = findViewById<Button>(R.id.upload_btn)
+        val goBackButton = findViewById<Button>(R.id.go_back_btn)
         goBackButton.setOnClickListener {
             // TODO: either camera or gallery if the user doesn't like the picture
         }

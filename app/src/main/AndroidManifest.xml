@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <!-- needed to save picture; doesn't need permission on 4.4+ -->
     <application
@@ -25,14 +26,6 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".CameraActivity"
-                android:label="@string/title_activity_camera">
-        </activity>
-        <activity
-                android:name=".GalleryActivity"
-                android:label="@string/title_activity_gallery">
-        </activity>
-        <activity
                 android:name=".HistoryActivity"
                 android:label="@string/title_activity_history"
                 android:theme="@style/AppTheme.NoActionBar">
@@ -48,7 +41,12 @@
                     android:resource="@xml/file_paths"/>
         </provider>
 
-        <activity android:name=".UploadActivity">
+        <service
+                android:name=".UploadImageService"
+                android:exported="false"/>
+
+        <activity android:name=".UploadActivity"
+                  android:label="@string/title_activity_upload">
         </activity>
         <activity android:name=".ResultsActivity">
         </activity>
