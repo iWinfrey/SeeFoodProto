@@ -7,6 +7,8 @@ import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
+import org.json.JSONArray
+import org.json.JSONObject
 
 // https://developer.android.com/training/run-background-service/create-service
 // https://developer.android.com/guide/components/services#ExtendingIntentService
@@ -24,11 +26,16 @@ class UploadImageService : IntentService(UploadImageService::class.simpleName) {
 
         Toast.makeText(this, "It's working", Toast.LENGTH_SHORT).show()
 
+        var obj = JSONObject()
+        obj.put("the_file", FileUploadCandidate.file?.readBytes())
+
         // TODO: get this working
         val request = Request.Builder()
             .url("http://3.16.73.99/upload")
-            .addHeader("message", "do we want to send something here?")
-            .post(RequestBody.create(MediaType.parse("*/*"), FileUploadCandidate.file?.readBytes()))
+//            .url("http://127.0.0.1:5000/upload")
+            .addHeader("Content-Type", "application/json")
+            .post(RequestBody.create(MediaType.parse("application/json"), obj.toString()))
+//            .post(RequestBody.create(MediaType.parse("application/json"), "{}"))
             .build()
 
         val response = client.newCall(request).execute()
