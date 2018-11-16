@@ -6,4 +6,5 @@ import java.io.File
 object CandidateImage {
     var file: File? = null
     var classification: String? = null
+    var source: String? = null
 }

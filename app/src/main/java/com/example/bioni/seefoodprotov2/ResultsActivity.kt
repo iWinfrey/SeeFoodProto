@@ -28,6 +28,28 @@ class ResultsActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
+
+        if (CandidateImage.source == "gallery") {
+            // set actions for the navigation buttons
+            val goBackButton = findViewById<Button>(R.id.go_back_btn2)
+            goBackButton.text = "Select another pic"
+            goBackButton.setOnClickListener {
+                val intent = Intent(this, MainActivity::class.java).apply {
+                    putExtra("do_thing", "gallery") // what does this do? nobody knows
+                }
+                startActivity(intent)
+            }
+        } else {
+            // set actions for the navigation buttons
+            val goBackButton = findViewById<Button>(R.id.go_back_btn2)
+            goBackButton.text = "Take another pic"
+            goBackButton.setOnClickListener {
+                val intent = Intent(this, MainActivity::class.java).apply {
+                    putExtra("do_thing", "camera") // what does this do? nobody knows
+                }
+                startActivity(intent)
+            }
+        }
     }
 
     // TODO: allow the user to go back to MainActivity at least, at most allow them to open camera or gallery app again, or go to history

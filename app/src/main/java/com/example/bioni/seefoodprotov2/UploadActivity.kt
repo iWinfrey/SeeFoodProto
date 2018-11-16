@@ -31,11 +31,29 @@ class UploadActivity : AppCompatActivity() {
 
         }
 
-        // set actions for the navigation buttons
-        val goBackButton = findViewById<Button>(R.id.go_back_btn)
-        goBackButton.setOnClickListener {
-            // TODO: either camera or gallery if the user doesn't like the picture
+        if (CandidateImage.source == "gallery") {
+            // set actions for the navigation buttons
+            val goBackButton = findViewById<Button>(R.id.go_back_btn)
+            goBackButton.text = "Select a different pic"
+            goBackButton.setOnClickListener {
+                val intent = Intent(this, MainActivity::class.java).apply {
+                    putExtra("do_thing", "gallery") // what does this do? nobody knows
+                }
+                startActivity(intent)
+            }
+        } else {
+            // set actions for the navigation buttons
+            val goBackButton = findViewById<Button>(R.id.go_back_btn)
+            goBackButton.text = "Take a different pic"
+            goBackButton.setOnClickListener {
+                val intent = Intent(this, MainActivity::class.java).apply {
+                    putExtra("do_thing", "camera") // what does this do? nobody knows
+                }
+                startActivity(intent)
+            }
         }
+
+
 
     }
 }

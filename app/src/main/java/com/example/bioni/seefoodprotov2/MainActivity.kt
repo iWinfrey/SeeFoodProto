@@ -51,22 +51,12 @@ class MainActivity : AppCompatActivity() {
         // set actions for the navigation buttons
         val openCameraButton = findViewById<Button>(R.id.open_camera_btn)
         openCameraButton.setOnClickListener {
-
-            // check for camera permissions, if we haven't already been granted them
-            if (ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                val cameraPermission = Array(1) { Manifest.permission.CAMERA}
-                requestPermissions(cameraPermission, 99)
-            }
-
-            // opens the camera directly
-            dispatchTakePictureIntent()
+            takeFromCamera()
         }
 
         val openGalleryActivity= findViewById<Button>(R.id.open_gallery_btn)
         openGalleryActivity.setOnClickListener {
-
-            // opens the system file picker
-            performFileSearch()
+            pickFromGallery()
         }
 
         val openHistoryButton = findViewById<Button>(R.id.open_history_btn)
@@ -77,6 +67,49 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // see if there is a value for "do"
+        val thingToDo: String?
+        thingToDo = if (savedInstanceState == null) {
+            val extras = intent.extras
+            if (extras == null) {
+                null
+            } else {
+                extras.getString("do_thing")
+            }
+        } else {
+            savedInstanceState.getSerializable("do_thing") as String
+        }
+        // were we sent back here to take another pic / select another pic?
+        if (thingToDo == "gallery") {
+            pickFromGallery()
+        } else if (thingToDo == "camera") {
+            takeFromCamera()
+        }
+
+    }
+
+    fun pickFromGallery() {
+        clearOldImage() // clear any image that is in the singleton object already
+        performFileSearch() // opens the system file picker
+    }
+
+    fun takeFromCamera() {
+        clearOldImage() // clear any image that is in the singleton object already
+
+        // check for camera permissions, if we haven't already been granted them
+        if (ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            val cameraPermission = Array(1) { Manifest.permission.CAMERA}
+            requestPermissions(cameraPermission, 99)
+        }
+
+        // opens the camera directly
+        dispatchTakePictureIntent()
+    }
+
+    fun clearOldImage() {
+        CandidateImage.file = null
+        CandidateImage.classification = null
+        CandidateImage.source = null
     }
 
     var flag = false
@@ -155,6 +188,7 @@ class MainActivity : AppCompatActivity() {
             storageDir /* directory */
         ).apply {
             CandidateImage.file = this
+            CandidateImage.source = "camera"
             // Save a file: path for use with ACTION_VIEW intents
             mCurrentPhotoPath = absolutePath
         }
@@ -196,6 +230,7 @@ class MainActivity : AppCompatActivity() {
                 println(uri)
 
                 CandidateImage.file = File(getPath(applicationContext, uri))
+                CandidateImage.source = "gallery"
 
                 val intent = Intent(this, UploadActivity::class.java).apply {
                     // pass the image data to the upload activity
