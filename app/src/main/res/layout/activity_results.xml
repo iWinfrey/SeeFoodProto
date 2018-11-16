@@ -20,8 +20,8 @@
 
         <ImageView
                 android:id="@+id/image_preview2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="350sp"
+                android:layout_height="350sp"
                 android:src="@mipmap/ic_launcher"
                 android:contentDescription="@string/it_s_a_thing"/>
 
