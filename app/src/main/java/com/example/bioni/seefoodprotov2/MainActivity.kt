@@ -154,7 +154,7 @@ class MainActivity : AppCompatActivity() {
             ".jpg", /* suffix */
             storageDir /* directory */
         ).apply {
-            FileUploadCandidate.file = this
+            CandidateImage.file = this
             // Save a file: path for use with ACTION_VIEW intents
             mCurrentPhotoPath = absolutePath
         }
@@ -195,7 +195,7 @@ class MainActivity : AppCompatActivity() {
             resultData?.data?.also { uri ->
                 println(uri)
 
-                FileUploadCandidate.file = File(getPath(applicationContext, uri))
+                CandidateImage.file = File(getPath(applicationContext, uri))
 
                 val intent = Intent(this, UploadActivity::class.java).apply {
                     // pass the image data to the upload activity
