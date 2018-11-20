@@ -33,8 +33,8 @@ class UploadImageService : IntentService(UploadImageService::class.simpleName) {
         val response = client.newCall(request).execute()
 
         CandidateImage.classification = response.body()?.string()
-
         Intent(this, ResultsActivity::class.java).also { intent ->
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
 

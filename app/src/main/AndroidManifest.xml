@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.bioni.seefoodprotov2">
 
+
     <uses-feature android:name="android.hardware.camera" android:required="false"/> <!-- needed to take picture -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -10,6 +11,7 @@
 
     <!-- needed to save picture; doesn't need permission on 4.4+ -->
     <application
+            android:usesCleartextTraffic="true"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -44,6 +46,9 @@
         <service
                 android:name=".UploadImageService"
                 android:exported="false"/>
+
+        <service android:name=".GetImagesService"
+                 android:exported="false"/>
 
         <activity android:name=".UploadActivity"
                   android:label="@string/title_activity_upload">

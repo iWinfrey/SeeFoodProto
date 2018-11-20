@@ -61,10 +61,13 @@ class MainActivity : AppCompatActivity() {
 
         val openHistoryButton = findViewById<Button>(R.id.open_history_btn)
         openHistoryButton.setOnClickListener {
-            val intent = Intent(this, HistoryActivity::class.java).apply {
-                putExtra("Thing to do", "Start Historying!") // what does this do? nobody knows
+            Intent(this, GetImagesService::class.java).also { intent ->
+                startService(intent)
             }
-            startActivity(intent)
+//            val intent = Intent(this, HistoryActivity::class.java).apply {
+//                putExtra("Thing to do", "Start Historying!") // what does this do? nobody knows
+//            }
+//            startActivity(intent)
         }
 
         // see if there is a value for "do"
@@ -77,7 +80,7 @@ class MainActivity : AppCompatActivity() {
                 extras.getString("do_thing")
             }
         } else {
-            savedInstanceState.getSerializable("do_thing") as String
+            savedInstanceState?.getSerializable("do_thing") as String
         }
         // were we sent back here to take another pic / select another pic?
         if (thingToDo == "gallery") {
