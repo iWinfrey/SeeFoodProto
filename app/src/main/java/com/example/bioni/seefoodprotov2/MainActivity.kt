@@ -22,7 +22,11 @@ import java.util.*
 import android.content.ContentUris
 import android.content.Context
 import android.database.Cursor
+import android.media.Image
+import android.os.Handler
 import android.provider.DocumentsContract
+import android.util.Log
+import kotlinx.android.synthetic.main.activity_main.view.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -89,6 +93,63 @@ class MainActivity : AppCompatActivity() {
             takeFromCamera()
         }
 
+        val img1 = findViewById<ImageView>(R.id.iv1)
+        val img2 = findViewById<ImageView>(R.id.iv2)
+        val img3 = findViewById<ImageView>(R.id.iv3)
+        val img4 = findViewById<ImageView>(R.id.iv4)
+        val img5 = findViewById<ImageView>(R.id.iv5)
+        val img6 = findViewById<ImageView>(R.id.iv6)
+        val img7 = findViewById<ImageView>(R.id.iv7)
+        val img8 = findViewById<ImageView>(R.id.iv8)
+        val img9 = findViewById<ImageView>(R.id.iv9)
+        val img10 = findViewById<ImageView>(R.id.iv10)
+
+        var food = arrayOf(img1, img2, img3, img4, img5, img6, img7, img8, img9, img10)
+
+        var handler1 = Handler()
+        var runnable1: Runnable = object : Runnable {
+            override fun run() {
+                rotatePictures(food)
+                handler1.postDelayed(this, 1000)
+            }
+        }
+        handler1.postDelayed(runnable1, 1000)
+    }
+
+    fun rotatePictures(array: Array<ImageView>){
+        for(img in array){
+            if(img.tag == "1"){
+                img.setImageResource(R.drawable.mainmilk)
+                img.setTag("10")
+            }else if(img.tag == "2"){
+                img.setImageResource(R.drawable.mainapple)
+                img.setTag("1")
+            }else if(img.tag == "3"){
+                img.setImageResource(R.drawable.mainburger)
+                img.setTag("2")
+            }else if(img.tag == "4"){
+                img.setImageResource(R.drawable.maincake)
+                img.setTag("3")
+            }else if(img.tag == "5"){
+                img.setImageResource(R.drawable.mainhotdog)
+                img.setTag("4")
+            }else if(img.tag == "6"){
+                img.setImageResource(R.drawable.maintaco)
+                img.setTag("5")
+            }else if(img.tag == "7"){
+                img.setImageResource(R.drawable.maincarrot)
+                img.setTag("6")
+            }else if(img.tag == "8"){
+                img.setImageResource(R.drawable.maincheese)
+                img.setTag("7")
+            }else if(img.tag == "9"){
+                img.setImageResource(R.drawable.maindonut)
+                img.setTag("8")
+            }else if(img.tag == "10"){
+                img.setImageResource(R.drawable.maincoffee)
+                img.setTag("9")
+            }
+        }
     }
 
     fun pickFromGallery() {

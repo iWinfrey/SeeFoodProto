@@ -6,6 +6,6 @@
         android:layout_height="match_parent"
         tools:showIn="@layout/activity_history"
         tools:context=".HistoryActivity"
-        android:id="@+id/HistoryActivity">
-
+        android:id="@+id/HistoryActivity"
+        android:orientation="vertical">
 </RelativeLayout>
