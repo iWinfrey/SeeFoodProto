@@ -11,9 +11,6 @@ class UploadImageService : IntentService(UploadImageService::class.simpleName) {
 
     override fun onHandleIntent(workIntent: Intent) {
 
-        // Gets data from the incoming Intent
-        val dataString = workIntent.dataString
-
         val client = OkHttpClient()
 
         val requestBody2 = MultipartBody.Builder()
@@ -39,4 +36,5 @@ class UploadImageService : IntentService(UploadImageService::class.simpleName) {
         }
 
     }
+
 }
