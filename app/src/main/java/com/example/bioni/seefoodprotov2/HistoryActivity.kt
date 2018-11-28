@@ -119,7 +119,15 @@ class HistoryActivity : AppCompatActivity() {
         val data = ArrayList<GridImage>()
         val gridView = findViewById<GridView>(R.id.gridView)
         for (imagePath in imagePaths) {
-            data.add(GridImage("Potato", imagePath))
+            val imageName = File(imagePath).nameWithoutExtension
+            val imageScore = imageName.substring(0, imageName.length - 7)
+            val strArray = imageScore.split("_".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+            val builder = StringBuilder()
+            for (s in strArray) {
+                val cap = s.substring(0, 1).toUpperCase() + s.substring(1)
+                builder.append("$cap ")
+            }
+            data.add(GridImage(builder.toString(), imagePath))
 //            val image = ImageView(applicationContext)
 //            image.setImageURI(Uri.parse(imagePath))
 //            image.maxHeight = 50
