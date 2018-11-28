@@ -47,9 +47,6 @@
                 android:name=".UploadImageService"
                 android:exported="false"/>
 
-        <service android:name=".GetImagesService"
-                 android:exported="false"/>
-
         <activity android:name=".UploadActivity"
                   android:label="@string/title_activity_upload">
         </activity>

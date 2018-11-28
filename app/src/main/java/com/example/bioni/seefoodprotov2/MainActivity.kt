@@ -65,13 +65,10 @@ class MainActivity : AppCompatActivity() {
 
         val openHistoryButton = findViewById<Button>(R.id.open_history_btn)
         openHistoryButton.setOnClickListener {
-            Intent(this, GetImagesService::class.java).also { intent ->
-                startService(intent)
+            val intent = Intent(this, HistoryActivity::class.java).apply {
+                putExtra("Thing to do", "Start Historying!") // what does this do? nobody knows
             }
-//            val intent = Intent(this, HistoryActivity::class.java).apply {
-//                putExtra("Thing to do", "Start Historying!") // what does this do? nobody knows
-//            }
-//            startActivity(intent)
+            startActivity(intent)
         }
 
         // see if there is a value for "do"
