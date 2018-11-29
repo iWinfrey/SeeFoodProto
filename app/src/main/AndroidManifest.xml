@@ -2,22 +2,23 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.bioni.seefoodprotov2">
 
-
-    <uses-feature android:name="android.hardware.camera" android:required="false"/> <!-- needed to take picture -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature
+            android:name="android.hardware.camera"
+            android:required="false"/> <!-- needed to take picture -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <!-- needed to save picture; doesn't need permission on 4.4+ -->
     <application
-            android:usesCleartextTraffic="true"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:usesCleartextTraffic="true">
         <activity
                 android:name=".MainActivity"
                 android:label="@string/app_name">
@@ -47,11 +48,15 @@
                 android:name=".UploadImageService"
                 android:exported="false"/>
 
-        <activity android:name=".UploadActivity"
-                  android:label="@string/title_activity_upload">
+        <activity
+                android:name=".UploadActivity"
+                android:label="@string/title_activity_upload">
         </activity>
-        <activity android:name=".ResultsActivity"
-                  android:label="@string/title_activity_results">
+        <activity
+                android:name=".ResultsActivity"
+                android:label="@string/title_activity_results">
+        </activity>
+        <activity android:name=".StatsActivity">
         </activity>
     </application>
 
