@@ -7,10 +7,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
-import okhttp3.MediaType
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.RequestBody
 
 class UploadActivity : AppCompatActivity() {
 
@@ -20,7 +16,7 @@ class UploadActivity : AppCompatActivity() {
 
         // put the image in the preview box
         var previewBox = findViewById<ImageView>(R.id.image_preview)
-        previewBox.setImageURI(Uri.fromFile(FileUploadCandidate.file))
+        previewBox.setImageURI(Uri.fromFile(CandidateImage.file))
 
         // set actions for the navigation buttons
         val uploadImageButton = findViewById<Button>(R.id.upload_btn)
@@ -35,11 +31,29 @@ class UploadActivity : AppCompatActivity() {
 
         }
 
-        // set actions for the navigation buttons
-        val goBackButton = findViewById<Button>(R.id.go_back_btn)
-        goBackButton.setOnClickListener {
-            // TODO: either camera or gallery if the user doesn't like the picture
+        if (CandidateImage.source == "gallery") {
+            // set actions for the navigation buttons
+            val goBackButton = findViewById<Button>(R.id.go_back_btn)
+            goBackButton.text = "Select a different pic"
+            goBackButton.setOnClickListener {
+                val intent = Intent(this, MainActivity::class.java).apply {
+                    putExtra("do_thing", "gallery") // what does this do? nobody knows
+                }
+                startActivity(intent)
+            }
+        } else {
+            // set actions for the navigation buttons
+            val goBackButton = findViewById<Button>(R.id.go_back_btn)
+            goBackButton.text = "Take a different pic"
+            goBackButton.setOnClickListener {
+                val intent = Intent(this, MainActivity::class.java).apply {
+                    putExtra("do_thing", "camera") // what does this do? nobody knows
+                }
+                startActivity(intent)
+            }
         }
+
+
 
     }
 }

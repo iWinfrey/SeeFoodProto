@@ -17,8 +17,9 @@
 
         <ImageView
                 android:id="@+id/image_preview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="350sp"
+                android:layout_height="350sp"
+                android:maxHeight="50sp"
                 android:src="@mipmap/ic_launcher"/>
 
         <Button android:text="Redo Image"
