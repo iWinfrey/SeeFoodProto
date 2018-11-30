@@ -47,6 +47,9 @@
         <service
                 android:name=".UploadImageService"
                 android:exported="false"/>
+        <service
+                android:name=".GetImagesService"
+                android:exported="false"/>
 
         <activity
                 android:name=".UploadActivity"
@@ -56,7 +59,12 @@
                 android:name=".ResultsActivity"
                 android:label="@string/title_activity_results">
         </activity>
-        <activity android:name=".StatsActivity">
+        <activity android:name=".SplashActivity" android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
     </application>
 
