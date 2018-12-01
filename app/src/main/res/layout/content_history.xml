@@ -2,10 +2,22 @@
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:showIn="@layout/activity_history"
         tools:context=".HistoryActivity"
         android:id="@+id/HistoryActivity"
         android:orientation="vertical">
+
+
+    <GridView
+            android:id="@+id/gridView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnWidth="150dp"
+            android:horizontalSpacing="15dp"
+            android:numColumns="auto_fit"
+            android:verticalSpacing="15dp"
+            android:paddingVertical="15dp"/>
 </RelativeLayout>
