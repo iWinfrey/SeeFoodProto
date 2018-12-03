@@ -1,17 +1,11 @@
 package com.example.bioni.seefoodprotov2
 
-import android.R.attr.*
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
-import com.example.bioni.seefoodprotov2.R.id.toolbar
-import android.view.Gravity
-import android.app.ActionBar
 import android.content.Intent
 import android.graphics.Color
-import android.view.ViewGroup.LayoutParams.FILL_PARENT
 import android.widget.Button
-import android.widget.LinearLayout
 import okhttp3.Request
 
 

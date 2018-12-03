@@ -7,6 +7,7 @@
         android:layout_height="match_parent"
         tools:context=".HistoryActivity">
 
+<!--
     <android.support.design.widget.AppBarLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -20,7 +21,8 @@
                 app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
     </android.support.design.widget.AppBarLayout>
+-->
 
-    <include layout="@layout/content_history"/>
+    <include layout="@layout/content_history" android:layout_height="match_parent" android:layout_width="match_parent"/>
 
 </android.support.design.widget.CoordinatorLayout>
