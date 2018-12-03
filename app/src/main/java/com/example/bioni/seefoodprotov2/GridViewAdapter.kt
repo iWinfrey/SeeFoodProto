@@ -10,9 +10,11 @@ import android.widget.BaseAdapter
 import kotlinx.android.synthetic.main.gridview_item.view.*
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.os.AsyncTask
 import android.util.Log
 import android.widget.ImageView
+import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
 import com.example.bioni.seefoodprotov2.R.id.imageItem
 
 
@@ -39,6 +41,29 @@ class GridViewAdapter(context: Context, var list: ArrayList<GridImage>) : BaseAd
         val foodView = inflater.inflate(R.layout.gridview_item, null)
         DownloadImageTask(foodView.imageItem).execute(image.imagePath)
         foodView.imageScore.text = image.title
+        val progress1 = foodView.progress_1 as RoundCornerProgressBar
+        progress1.setProgressBackgroundColor(Color.parseColor("#ffffff"))
+        progress1.setMax(60F)
+
+        if(image.title == "High No"){
+            progress1.setProgressColor(Color.parseColor("#b20000"))
+            progress1.setProgress(10F)
+        } else if(image.title == "Moderate No"){
+            progress1.setProgressColor(Color.parseColor("#ff4500"))
+            progress1.setProgress(20F)
+        } else if(image.title == "Low No"){
+            progress1.setProgressColor(Color.parseColor("#ffff33"))
+            progress1.setProgress(30F)
+        } else if(image.title == "Low Yes"){
+            progress1.setProgressColor(Color.parseColor("#228B22"))
+            progress1.setProgress(40F)
+        } else if(image.title == "Moderate Yes"){
+            progress1.setProgressColor(Color.parseColor("#3232cd"))
+            progress1.setProgress(50F)
+        } else if(image.title == "High Yes"){
+            progress1.setProgressColor(Color.parseColor("##4b0082"))
+            progress1.setProgress(60F)
+        }
 
         return foodView
     }
