@@ -61,7 +61,7 @@ class GridViewAdapter(context: Context, var list: ArrayList<GridImage>) : BaseAd
             progress1.setProgressColor(Color.parseColor("#3232cd"))
             progress1.setProgress(50F)
         } else if(image.title == "High Yes"){
-            progress1.setProgressColor(Color.parseColor("##4b0082"))
+            progress1.setProgressColor(Color.parseColor("#4b0082"))
             progress1.setProgress(60F)
         }
 

@@ -98,7 +98,7 @@ class ResultsActivity : AppCompatActivity() {
             progress1.setProgressColor(Color.parseColor("#3232cd"))
             progress1.setProgress(50F)
         } else if(resultText.equals("Is it food?... High Yes")){
-            progress1.setProgressColor(Color.parseColor("##4b0082"))
+            progress1.setProgressColor(Color.parseColor("#4b0082"))
             progress1.setProgress(60F)
         }
 
