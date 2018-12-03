@@ -1,4 +1,5 @@
-# CEG 4110 Group Project: SeeFood 10.8 Mountain Lion Xtreme Edition
+# CEG 4110 Group Project:
+# SeeFood 10.8 Mountain Lion Xtreme Edition
 
 This is a simple app which contains two functions:
 1. Allow a user to select an image from their gallery or take an image with their camera
