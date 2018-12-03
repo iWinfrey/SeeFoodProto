@@ -26,6 +26,7 @@ class StatsActivity : AppCompatActivity() {
 
         val btnHome = Button(this)
         btnHome.setText("Home")
+        btnHome.setTextSize(18F)
         btnHome.setBackgroundColor(Color.parseColor("#4b0082"))
         btnHome.setTextColor(Color.WHITE)
         toolbar.addView(btnHome)
@@ -39,6 +40,7 @@ class StatsActivity : AppCompatActivity() {
 
         val btnHistory = Button(this)
         btnHistory.setText("History")
+        btnHistory.setTextSize(18F)
         btnHistory.setBackgroundColor(Color.parseColor("#4b0082"))
         btnHistory.setTextColor(Color.WHITE)
         toolbar.addView(btnHistory)
@@ -66,6 +68,7 @@ class StatsActivity : AppCompatActivity() {
 
         val btnRefresh = Button(this)
         btnRefresh.setText("Refresh")
+        btnRefresh.setTextSize(18F)
         btnRefresh.setBackgroundColor(Color.parseColor("#4b0082"))
         btnRefresh.setTextColor(Color.WHITE)
         toolbar.addView(btnRefresh)

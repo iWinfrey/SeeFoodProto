@@ -23,6 +23,7 @@ class ResultsActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         val btnHome = Button(this)
         btnHome.setText("Home")
+        btnHome.setTextSize(18F)
         btnHome.setBackgroundColor(Color.parseColor("#4b0082"))
         btnHome.setTextColor(Color.WHITE)
         toolbar.addView(btnHome)
@@ -36,6 +37,7 @@ class ResultsActivity : AppCompatActivity() {
 
         val btnHistory = Button(this)
         btnHistory.setText("History")
+        btnHistory.setTextSize(18F)
         btnHistory.setBackgroundColor(Color.parseColor("#4b0082"))
         btnHistory.setTextColor(Color.WHITE)
         toolbar.addView(btnHistory)
@@ -49,6 +51,7 @@ class ResultsActivity : AppCompatActivity() {
 
         val btnStats = Button(this)
         btnStats.setText("Stats")
+        btnStats.setTextSize(18F)
         btnStats.setBackgroundColor(Color.parseColor("#4b0082"))
         btnStats.setTextColor(Color.WHITE)
         toolbar.addView(btnStats)
@@ -102,7 +105,7 @@ class ResultsActivity : AppCompatActivity() {
         if (CandidateImage.source == "gallery") {
             // set actions for the navigation buttons
             val goBackButton = findViewById<Button>(R.id.go_back_btn2)
-            goBackButton.text = "Select another picture"
+            goBackButton.text = " Select another picture "
             goBackButton.setOnClickListener {
                 val intent = Intent(this, MainActivity::class.java).apply {
                     putExtra("do_thing", "gallery") // what does this do? nobody knows
@@ -112,7 +115,7 @@ class ResultsActivity : AppCompatActivity() {
         } else {
             // set actions for the navigation buttons
             val goBackButton = findViewById<Button>(R.id.go_back_btn2)
-            goBackButton.text = "Take another picture"
+            goBackButton.text = " Take another picture "
             goBackButton.setOnClickListener {
                 val intent = Intent(this, MainActivity::class.java).apply {
                     putExtra("do_thing", "camera") // what does this do? nobody knows

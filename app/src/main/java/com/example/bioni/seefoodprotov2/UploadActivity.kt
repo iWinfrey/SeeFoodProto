@@ -34,7 +34,7 @@ class UploadActivity : AppCompatActivity() {
         if (CandidateImage.source == "gallery") {
             // set actions for the navigation buttons
             val goBackButton = findViewById<Button>(R.id.go_back_btn)
-            goBackButton.text = "Select different picture"
+            //goBackButton.text = "Select different picture"
             goBackButton.setOnClickListener {
                 val intent = Intent(this, MainActivity::class.java).apply {
                     putExtra("do_thing", "gallery") // what does this do? nobody knows
@@ -44,7 +44,7 @@ class UploadActivity : AppCompatActivity() {
         } else {
             // set actions for the navigation buttons
             val goBackButton = findViewById<Button>(R.id.go_back_btn)
-            goBackButton.text = "Take new picture"
+            //goBackButton.text = "Take new picture"
             goBackButton.setOnClickListener {
                 val intent = Intent(this, MainActivity::class.java).apply {
                     putExtra("do_thing", "camera") // what does this do? nobody knows

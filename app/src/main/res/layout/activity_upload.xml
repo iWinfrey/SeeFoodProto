@@ -22,15 +22,39 @@
                 android:maxHeight="50sp"
                 android:src="@mipmap/ic_launcher"/>
 
-        <Button android:text="Redo Image"
+        <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp"/>
+        <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/go_back_btn"/>
+                android:layout_height="wrap_content">
+            <Button android:text=" Clear ❌ "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/go_back_btn"
+                    android:background="@drawable/buttoncolor"
+                    android:shadowColor="#D3D3D3"
+                    android:shadowDx="0"
+                    android:shadowDy="0"
+                    android:shadowRadius="5" android:fontFamily="@font/kameron_regular"
+                    android:textColor="@android:color/black" android:textSize="18sp"/>
+            <Space
+                    android:layout_width="8dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
 
-        <Button android:text="Upload"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/upload_btn"/>
+            <Button android:text=" Upload ✅ "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/upload_btn"
+                    android:background="@drawable/buttoncolor"
+                    android:shadowColor="#D3D3D3"
+                    android:shadowDx="0"
+                    android:shadowDy="0"
+                    android:shadowRadius="5" android:fontFamily="@font/kameron_regular"
+                    android:textColor="@android:color/black" android:textSize="18sp"/>
+        </LinearLayout>
 
     </LinearLayout>
 

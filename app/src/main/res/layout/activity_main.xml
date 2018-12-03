@@ -12,31 +12,58 @@
             android:text="📷"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/open_camera_btn" app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/open_camera_btn"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="36dp"
             android:layout_marginBottom="36dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:fadingEdge="none|horizontal"
-            android:textSize="18sp"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:fadingEdge="none|horizontal"
+            android:textSize="18sp"
+            android:elevation="0dp"
+            android:background="@drawable/buttoncolor"
+            android:shadowColor="#D3D3D3"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"/>
 
     <!--button to open the gallery picker-->
     <Button
             android:text="🖼️"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/open_gallery_btn" android:layout_marginBottom="36dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toStartOf="@+id/open_history_btn"
-            android:layout_marginEnd="8dp" app:layout_constraintStart_toEndOf="@+id/open_camera_btn"
-            android:layout_marginStart="8dp" android:fadingEdge="none|horizontal" android:textSize="18sp"/>
+            android:id="@+id/open_gallery_btn"
+            android:layout_marginBottom="36dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/open_history_btn"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toEndOf="@+id/open_camera_btn"
+            android:layout_marginStart="8dp"
+            android:fadingEdge="none|horizontal"
+            android:textSize="18sp"
+            android:background="@drawable/buttoncolor"
+            android:shadowColor="#D3D3D3"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"/>
 
     <!--button to open the history-->
     <Button
             android:text="🕒"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/open_history_btn" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="36dp"
+            android:id="@+id/open_history_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="36dp"
             android:layout_marginBottom="36dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:fadingEdge="none|horizontal"
-            android:textSize="18sp"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:fadingEdge="none|horizontal"
+            android:textSize="18sp"
+            android:background="@drawable/buttoncolor"
+            android:shadowColor="#D3D3D3"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"/>
+
     <ImageView
             android:layout_width="305dp"
             android:layout_height="376dp" app:srcCompat="@drawable/logo"
