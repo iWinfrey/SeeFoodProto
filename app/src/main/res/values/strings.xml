@@ -4,7 +4,7 @@
     <string name="title_activity_gallery">Select an Image</string>
     <string name="title_activity_camera">Take a Picture</string>
     <string name="title_activity_upload">Upload Preview</string>
-    <string name="title_activity_results">See Food Results</string>
+    <string name="title_activity_results">SeeFood Results</string>
     <string name="your_image_has_been_classified">Your image has been classified:</string>
     <string name="it_s_a_thing">It\'s a thing</string>
     <string name="go_home">Go Home</string>
