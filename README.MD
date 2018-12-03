@@ -17,7 +17,7 @@ Running the APK should be as easy as loading it onto your device and installing.
 
 # Development and Design
 
-This project was written in Kotlin, as it is now Android's first class language. All developers were already familiar with Java. Android Studio was the IDE used. Testing was done on a Huawei Nexus 6P, Samsung Galaxy Note 8, a xxx, and various emulated devices. 
+This project was written in Kotlin, as it is now Android's first class language. All developers were already familiar with Java. Android Studio was the IDE used. Testing was done on a Huawei Nexus 6P, Samsung Galaxy Note 8, and various emulated devices. 
 
 The app is implemented with several classes:
 
