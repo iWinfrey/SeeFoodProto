@@ -15,7 +15,7 @@ class SplashActivity : AppCompatActivity() {
 
         //Loading/Splash Screen
 
-        val SPLASH_DISPLAY_LENGTH = 5000                   //About 2-3 seconds
+        val SPLASH_DISPLAY_LENGTH = 3000                   //About 2-3 seconds
 
         Handler().postDelayed({
             run() {
