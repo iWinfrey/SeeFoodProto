@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity() {
         var runnable1: Runnable = object : Runnable {
             override fun run() {
                 rotatePictures(food)
-                handler1.postDelayed(this, 1000)
+                handler1.postDelayed(this, 500)
             }
         }
         handler1.postDelayed(runnable1, 1000)
@@ -168,8 +168,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun clearOldImage() {
-        CandidateImage.file = null
-        CandidateImage.classification = null
+        CandidateImage.file = ArrayList()
+        CandidateImage.classification = ArrayList()
         CandidateImage.source = null
     }
 
@@ -231,9 +231,11 @@ class MainActivity : AppCompatActivity() {
             // To search for all documents available via installed storage providers,
             // it would be "*/*".
             type = "image/*"
+            action = Intent.ACTION_GET_CONTENT
+            putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
         }
-
-        startActivityForResult(intent, REQUEST_FILE_PICKER)
+        startActivityForResult(Intent.createChooser(intent,"Select Picture"), REQUEST_FILE_PICKER)
+        //startActivityForResult(intent, REQUEST_FILE_PICKER)
     }
 
     lateinit var mCurrentPhotoPath: String
@@ -242,13 +244,13 @@ class MainActivity : AppCompatActivity() {
     private fun createImageFile(): File {
         // Create an image file name
         val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-        val storageDir: File = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        val storageDir: File? = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         return File.createTempFile(
             "JPEG_${timeStamp}_", /* prefix */
             ".jpg", /* suffix */
             storageDir /* directory */
         ).apply {
-            CandidateImage.file = this
+            CandidateImage.file?.add(this)
             CandidateImage.source = "camera"
             // Save a file: path for use with ACTION_VIEW intents
             mCurrentPhotoPath = absolutePath
@@ -285,19 +287,51 @@ class MainActivity : AppCompatActivity() {
     // this will get called when either the camera or file picker activity returns
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
 
-        if (requestCode == REQUEST_FILE_PICKER && resultCode == Activity.RESULT_OK) {
+        if (requestCode == REQUEST_FILE_PICKER) {
             // when the user has selected an existing image from their gallery
-            resultData?.data?.also { uri ->
-                println(uri)
+            if (resultCode == Activity.RESULT_OK) {
+                Log.d("Test1", "It got here!")
+                if(resultData?.clipData != null) {
+                    Log.d("Test2", "It got here also!")
+                    val count = resultData.clipData.itemCount; //evaluate the count before the for loop --- otherwise, the count is evaluated every loop.
+                    for(i in 0 until count) {
+                        val uri = resultData.clipData.getItemAt(i).uri
+                        Log.d("Test", uri.toString())
 
-                CandidateImage.file = File(getPath(applicationContext, uri))
-                CandidateImage.source = "gallery"
+                        CandidateImage.file?.add(File(getPath(applicationContext, uri)))
+                        CandidateImage.source = "gallery"
+                        //do something with the image (save it to some directory or whatever you need to do with it here)
+                    }
+                    val intent = Intent(this, UploadActivity::class.java).apply {
+                        // pass the image data to the upload activity
+                        putExtra("source", "gallery")
+                    }
+                    startActivity(intent)
+                } else {
+                    resultData?.data?.also { uri ->
+                        println(uri)
 
-                val intent = Intent(this, UploadActivity::class.java).apply {
-                    // pass the image data to the upload activity
-                    putExtra("source", "gallery")
+                        CandidateImage.file?.add(File(getPath(applicationContext, uri)))
+                        CandidateImage.source = "gallery"
+                        val intent = Intent(this, UploadActivity::class.java).apply {
+                            // pass the image data to the upload activity
+                            putExtra("source", "gallery")
+                        }
+                        startActivity(intent)
+                    }
                 }
-                startActivity(intent)
+            } else {
+                resultData?.data?.also { uri ->
+                    println(uri)
+
+                    CandidateImage.file?.add(File(getPath(applicationContext, uri)))
+                    CandidateImage.source = "gallery"
+                    val intent = Intent(this, UploadActivity::class.java).apply {
+                        // pass the image data to the upload activity
+                        putExtra("source", "gallery")
+                    }
+                    startActivity(intent)
+                }
             }
         } else if (requestCode == REQUEST_TAKE_PHOTO && resultCode == Activity.RESULT_OK) {
             // when the user has taken a picture with their default camera app
@@ -306,7 +340,6 @@ class MainActivity : AppCompatActivity() {
                 putExtra("source", "camera")
             }
             startActivity(intent)
-
         }
     }
 

@@ -5,6 +5,7 @@ import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.GridView
 import android.widget.ImageView
 import android.widget.Toast
 
@@ -14,9 +15,13 @@ class UploadActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_upload)
 
-        // put the image in the preview box
-        var previewBox = findViewById<ImageView>(R.id.image_preview)
-        previewBox.setImageURI(Uri.fromFile(CandidateImage.file))
+        val data = ArrayList<GridImage>()
+        val gridView = findViewById<GridView>(R.id.gridView)
+        for (i in 0 until (CandidateImage.file?.size as Int)) {
+            val path = CandidateImage.file!![i].path
+            data.add(GridImage("Potato", path))
+        }
+        gridView.adapter = GridViewAdapter(applicationContext, data, "Upload")
 
         // set actions for the navigation buttons
         val uploadImageButton = findViewById<Button>(R.id.upload_btn)

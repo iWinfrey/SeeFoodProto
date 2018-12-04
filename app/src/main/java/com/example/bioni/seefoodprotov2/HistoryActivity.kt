@@ -118,6 +118,6 @@ class HistoryActivity : AppCompatActivity() {
             val score = imageData.getString("score")
             data.add(GridImage(score, path))
         }
-        gridView.adapter = GridViewAdapter(applicationContext, data)
+        gridView.adapter = GridViewAdapter(applicationContext, data, "History")
     }
 }

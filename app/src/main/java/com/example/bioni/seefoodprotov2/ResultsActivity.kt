@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.support.v7.widget.Toolbar
 import android.view.View
 import android.widget.Button
+import android.widget.GridView
 import android.widget.ImageView
 import android.widget.TextView
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
@@ -63,44 +64,14 @@ class ResultsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        /*val openMainActivity = findViewById<Button>(R.id.go_home_btn)
-        openMainActivity.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java).apply {
-                putExtra("Thing to do", "Going back to main activity!") // what does this do? nobody knows
-            }
-            startActivity(intent)
-        }*/
-
-        var previewBox = findViewById<ImageView>(R.id.image_preview2)
-        previewBox.setImageURI(Uri.fromFile(CandidateImage.file))
-
-        var classificationText = findViewById<TextView>(R.id.classification_text)
-        val resultText = "Is it food?... " + CandidateImage.classification
-        classificationText.text = resultText
-
-        val progress1 = findViewById<View>(R.id.progress_1) as RoundCornerProgressBar
-        progress1.setProgressBackgroundColor(Color.parseColor("#ffffff"))
-        progress1.setMax(60F)
-
-        if(resultText.equals("Is it food?... High No")){
-            progress1.setProgressColor(Color.parseColor("#b20000"))
-            progress1.setProgress(10F)
-        } else if(resultText.equals("Is it food?... Moderate No")){
-            progress1.setProgressColor(Color.parseColor("#ff4500"))
-            progress1.setProgress(20F)
-        } else if(resultText.equals("Is it food?... Low No")){
-            progress1.setProgressColor(Color.parseColor("#ffff33"))
-            progress1.setProgress(30F)
-        } else if(resultText.equals("Is it food?... Low Yes")){
-            progress1.setProgressColor(Color.parseColor("#228B22"))
-            progress1.setProgress(40F)
-        } else if(resultText.equals("Is it food?... Moderate Yes")){
-            progress1.setProgressColor(Color.parseColor("#3232cd"))
-            progress1.setProgress(50F)
-        } else if(resultText.equals("Is it food?... High Yes")){
-            progress1.setProgressColor(Color.parseColor("#4b0082"))
-            progress1.setProgress(60F)
+        val data = ArrayList<GridImage>()
+        val gridView = findViewById<GridView>(R.id.gridView)
+        for (i in 0 until CandidateImage.file!!.size) {
+            val path = CandidateImage.file!![i].path
+            val score = CandidateImage.classification!![i]
+            data.add(GridImage(score, path))
         }
+        gridView.adapter = GridViewAdapter(applicationContext, data, "Results")
 
         if (CandidateImage.source == "gallery") {
             // set actions for the navigation buttons
