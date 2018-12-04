@@ -2,9 +2,9 @@
 # SeeFood 10.8 Mountain Lion Xtreme Edition
 
 This is a simple app which contains two functions:
-1. Allow a user to select an image from their gallery or take an image with their camera
-2. Upload that image to a remote server
-3. Rate the image as being food or not food
+1. Allow a user to select an image or images from their gallery or take an image with their camera
+2. Upload image(s) to a remote server
+3. Rate the image(s) as being food or not food
 4. Allow the user to view previously uploaded images and their ratings
 
 # Requirements
@@ -29,13 +29,13 @@ This is the starting activity, and the home screen for the app. From here, the u
 
 ### UploadActivity
 
-There is no activity for camera or gallery, since those function are handled by the user's default apps. Once they take or select an image, they are taken here. This screen consists of only an upload button or a button to go back to the previous action (whether that be camera or gallery).
+There is no activity for camera or gallery, since those function are handled by the user's default apps. Once they take or select image(s), they are taken here. This screen consists of only an upload button or a button to go back to the previous action (whether that be camera or gallery).
 
 <img src="/img/Screenshot_1543875342.png" height="300">
 
 ### ResultsActivity
 
-The results activity opens after the user's image has been classified by the server and the results are received by the app.
+The results activity opens after the user's image(s) has been classified by the server and the results are received by the app.
 
 <img src="/img/Screenshot_1543875346.png" height="300">
 
