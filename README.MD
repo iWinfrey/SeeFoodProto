@@ -23,7 +23,7 @@ The app is implemented with several classes:
 
 ### MainActivity
 
-This is the starting activity, and the home screen for the app. From here the user can open new activities to take a picture, select a picture from their gallery, or view previously uploaded images.
+This is the starting activity, and the home screen for the app. From here, the user can open new activities to take a picture, select a picture from their gallery, or view previously uploaded images.
 
 <img src="/img/Screenshot_1543874872.png" height="300">
 
@@ -41,19 +41,19 @@ The results activity opens after the user's image has been classified by the ser
 
 ### HistoryActivity
 
-The history activity show previously classified images and their ratings. When the activity is opened, a call is made to the server to return image thumbnails and classification data. This data is then displayed for the user. 
+The history activity shows previously classified images and their ratings. When the activity is opened, a call is made to the server to return image thumbnails and classification data. This data is then displayed for the user. 
 
 <img src="/img/Screenshot_1543875118.png" height="300">
 
 ### StatsActivity
 
-On this activity the user can see a statistics related to images uploaded over time, in relation to how many were food or not food, and how many total.
+On this activity the user can see statistics related to images uploaded over time, in relation to how many were food or not food, and how many total.
 
 <img src="/img/Screenshot_1543876874.png" height="300">
 
 ### UploadImageService and GetImageService
 
-In Android, network operations are not allowed to run on the main UI thread. For network operations it is necessary to create a service which can be run asynchronously. For uploading images to the server or pulling down images from the server, we have two separate services.  
+In Android, network operations are not allowed to run on the main UI thread. For network operations, it is necessary to create a service which can be run asynchronously. For uploading images to the server or pulling down images from the server, we have two separate services.  
 
 
 # References
