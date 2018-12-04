@@ -8,12 +8,15 @@
         tools:context=".UploadActivity" android:background="@drawable/potatolight">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent"
+                  android:layout_width="0dp"
+                  android:layout_height="0dp"
                   android:paddingLeft="16dp"
                   android:paddingRight="16dp"
                   android:orientation="vertical"
-                  android:gravity="center">
+                  android:gravity="center" app:layout_constraintTop_toTopOf="parent"
+                  app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                  android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@id/buttonlayout"
+                  android:id="@+id/gridlayout">
 
         <GridView
                 android:id="@+id/gridView"
@@ -29,40 +32,39 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-        <Space
-                android:layout_width="match_parent"
-                android:layout_height="8dp"/>
-        <LinearLayout
-                android:orientation="horizontal"
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonlayout" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            android:gravity="center">
+        <Button android:text=" Clear ❌ "
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-            <Button android:text=" Clear ❌ "
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/go_back_btn"
-                    android:background="@drawable/buttoncolor"
-                    android:shadowColor="#D3D3D3"
-                    android:shadowDx="0"
-                    android:shadowDy="0"
-                    android:shadowRadius="5" android:fontFamily="@font/kameron_regular"
-                    android:textColor="@android:color/black" android:textSize="18sp"/>
-            <Space
-                    android:layout_width="8dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                android:layout_height="wrap_content"
+                android:id="@+id/go_back_btn"
+                android:background="@drawable/buttoncolor"
+                android:shadowColor="#D3D3D3"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5" android:fontFamily="@font/kameron_regular"
+                android:textColor="@android:color/black" android:textSize="18sp"/>
+        <Space
+                android:layout_width="8dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
 
-            <Button android:text=" Upload ✅ "
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/upload_btn"
-                    android:background="@drawable/buttoncolor"
-                    android:shadowColor="#D3D3D3"
-                    android:shadowDx="0"
-                    android:shadowDy="0"
-                    android:shadowRadius="5" android:fontFamily="@font/kameron_regular"
-                    android:textColor="@android:color/black" android:textSize="18sp"/>
-        </LinearLayout>
-
+        <Button android:text=" Upload ✅ "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/upload_btn"
+                android:background="@drawable/buttoncolor"
+                android:shadowColor="#D3D3D3"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5" android:fontFamily="@font/kameron_regular"
+                android:textColor="@android:color/black" android:textSize="18sp"/>
     </LinearLayout>
 
 
