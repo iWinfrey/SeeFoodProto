@@ -18,7 +18,7 @@
                 android:textColor="#fff"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
-                android:background="@color/colorPrimary"/>
+                android:potatobackground="@color/colorPrimary"/>
 
         <Button
                 android:text="History"
@@ -26,7 +26,7 @@
                 android:textColor="#fff"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
-                android:background="@color/colorPrimary"/>
+                android:potatobackground="@color/colorPrimary"/>
 
         <Button
                 android:text="Stats"
@@ -34,7 +34,7 @@
                 android:textColor="#fff"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
-                android:background="@color/colorPrimary"/>-->
+                android:potatobackground="@color/colorPrimary"/>-->
 
     </LinearLayout>
 
