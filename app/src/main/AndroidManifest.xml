@@ -59,7 +59,9 @@
                 android:name=".ResultsActivity"
                 android:label="@string/blank">
         </activity>
-        <activity android:name=".StatsActivity"></activity>
+        <activity android:name=".StatsActivity"
+                  android:label="@string/blank">
+        </activity>
         <activity android:name=".SplashActivity" android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
