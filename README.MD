@@ -11,7 +11,7 @@ This is a simple app which contains two functions:
 
 This app needs only four permissions: read, write, camera and internet. Read is used to allow the user to select an image from their device, write is used to save an image to their device, camera is used to take a new image with the user's camera, and internet is required to communicate with the remote server. 
 
-Development was done against API Level 28 / Android 9.0. It may, but it is not guaranteed to work with any lower version.
+Development was done against API Level 28 / **Android 9.0**. It may, but it is not guaranteed to work with any lower version.
 
 Running the APK (it is in the root github directory) should be as easy as loading it onto your device and installing. Apps from unknown sources must be enabled. This app is not available on the app store, it would simply generate too many sales.
 
