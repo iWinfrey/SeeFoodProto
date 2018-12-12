@@ -61,3 +61,5 @@ In Android, network operations are not allowed to run on the main UI thread. For
 The following resources were used for this project:
 
 + [The Official Android Documentation](https://developer.android.com/docs/)
+
++ [OkHttp Library - Http client for Java and Android](http://square.github.io/okhttp/)
